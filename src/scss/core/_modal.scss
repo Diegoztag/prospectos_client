@@ -1,0 +1,17 @@
+@each $color, $value in $theme-colors {
+  .modal-#{$color} {
+
+    .modal-content {
+      border: none;
+      border-radius: 15px;
+      border-color: $value;
+    }
+
+    .modal-header {
+      border: none;
+      border-radius: 15px 15px 0 0;
+      color: #fff;
+      background-color: $value;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.p-datatable .p-sortable-column.p-highlight {
+  color: $blue;
+}
+
+.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+  color: $blue;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: $blue;
+  border-color: $blue;
+}
+
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+input[type='file']::-webkit-file-upload-button,
+button {
+  border-radius: 3px;
+  border-width: 1px;
+}

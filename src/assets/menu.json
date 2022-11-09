@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Dashboard",
+    "url": "/dashboard",
+    "icon": "icon-speedometer"
+  },
+  {
+    "title": true,
+    "name": "App"
+  },
+  {
+    "name": "Prospectos",
+    "url": "/prospectos",
+    "icon": "icon-wrench"
+  }
+]

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    image: prospectos_client
+    build: .
+    container_name: prospectos_client
+    restart: always
+    ports:
+      - 2100:2100
+      - 3200:3200
+    volumes:
+      - .:/home/app
+      - /home/app/node_modules

@@ -1,0 +1,11 @@
+.git
+
+.vscode
+
+node_modules
+
+vendor
+
+Dockerfile
+
+.dockerignore

@@ -1,0 +1,74 @@
+/*!
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.6
+ * @link http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license MIT
+ */
+
+html {
+  font-size: 14px;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  text-align: center !important;
+}
+
+.form1 img {
+  height: 50px !important;
+}
+
+.form2 > h2 {
+  text-align: center !important;
+}
+
+.btn-crear {
+  color: #fff !important;
+  background-color: #006fb9 !important;
+  border-color: #006fb9 !important;
+}
+
+.btn-crear:hover {
+  transition: all 0.5;
+  background-color: #0c639e !important;
+}
+
+.hidden-file {
+  visibility: hidden;
+  position: absolute;
+  overflow: hidden;
+  width: 0px;
+  height:0px;
+  border:none;
+  margin:0;
+  padding:0
+}
+
+.p-dropdown {
+  border-radius: 20px;
+  border: 0.1px solid #eeefef;
+}
+
+.p-dropdown-label {
+  text-align: center;
+}
+
+td > span {
+  padding: 6px;
+  border-radius: 6px;
+}
+
+// Override Boostrap variables
+@import 'bootstrap-variables';
+
+// Import Bootstrap source files
+@import '~bootstrap/scss/bootstrap';
+@import '~@sweetalert2/theme-bootstrap-4/bootstrap-4.scss';
+
+// Import core styles
+@import 'core/core';
+
+// Custom styles
+@import 'custom';
+@import 'toast-custom';
+@import 'primeng-custom';

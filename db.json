@@ -1,0 +1,287 @@
+{
+  "menu2": [
+    {
+      "name": "Inicio",
+      "url": "/dashboard",
+      "icon": "icon-speedometer"
+    },
+    {
+      "name": "Ejemplo",
+      "url": "/example",
+      "icon": "icon-wrench",
+      "badge": {
+        "variant": "danger",
+        "text": "NEW"
+      }
+    }
+  ],
+  "menu": {
+    "meta": {},
+    "data": {
+      "menu": [
+        {
+          "name": "Inicio",
+          "url": "/dashboard",
+          "icon": "icon-speedometer"
+        },
+        {
+          "name": "Prospectos",
+          "url": "/prospectos",
+          "icon": "icon-wrench"
+        }
+      ]
+    }
+  },
+  "users": [
+    {
+      "numeroempleado": 97347175,
+      "apellidopaterno": "Perez",
+      "apellidomaterno": "Lopez",
+      "nombre": "Juan",
+      "genero": 1,
+      "edad": 20
+    },
+    {
+      "numeroempleado": 99000002,
+      "apellidopaterno": "Gomez",
+      "apellidomaterno": "Benitez",
+      "nombre": "Jose",
+      "genero": 1,
+      "edad": 40
+    },
+    {
+      "numeroempleado": 90235300,
+      "apellidopaterno": "Gonzalez",
+      "apellidomaterno": "Morales",
+      "nombre": "Diana",
+      "genero": 2,
+      "edad": 26
+    }
+  ],
+  "estados": [
+    {
+      "id": 1,
+      "clave": "AGS",
+      "nombre": "AGUASCALIENTES"
+    },
+    {
+      "id": 2,
+      "clave": "BC",
+      "nombre": "BAJA CALIFORNIA"
+    },
+    {
+      "id": 3,
+      "clave": "BCS",
+      "nombre": "BAJA CALIFORNIA S"
+    },
+    {
+      "id": 4,
+      "clave": "CMP",
+      "nombre": "CAMPECHE"
+    },
+    {
+      "id": 5,
+      "clave": "COA",
+      "nombre": "COAHUILA"
+    },
+    {
+      "id": 6,
+      "clave": "COL",
+      "nombre": "COLIMA"
+    },
+    {
+      "id": 7,
+      "clave": "CHI",
+      "nombre": "CHIHUAHUA"
+    },
+    {
+      "id": 8,
+      "clave": "CHS",
+      "nombre": "CHIAPAS"
+    },
+    {
+      "id": 9,
+      "clave": "CMX",
+      "nombre": "CIUDAD DE MEXICO"
+    },
+    {
+      "id": 10,
+      "clave": "DGO",
+      "nombre": "DURANGO"
+    },
+    {
+      "id": 11,
+      "clave": "GRO",
+      "nombre": "GUERRERO"
+    },
+    {
+      "id": 12,
+      "clave": "GTO",
+      "nombre": "GUANAJUATO"
+    },
+    {
+      "id": 13,
+      "clave": "HGO",
+      "nombre": "HIDALGO"
+    },
+    {
+      "id": 14,
+      "clave": "JAL",
+      "nombre": "JALISCO"
+    },
+    {
+      "id": 15,
+      "clave": "MCH",
+      "nombre": "MICHOACAN"
+    },
+    {
+      "id": 16,
+      "clave": "MEX",
+      "nombre": "ESTADO DE MEXICO"
+    },
+    {
+      "id": 17,
+      "clave": "MOR",
+      "nombre": "MORELOS"
+    },
+    {
+      "id": 18,
+      "clave": "NAY",
+      "nombre": "NAYARIT"
+    },
+    {
+      "id": 19,
+      "clave": "NL",
+      "nombre": "NUEVO LEON"
+    },
+    {
+      "id": 20,
+      "clave": "OAX",
+      "nombre": "OAXACA"
+    },
+    {
+      "id": 21,
+      "clave": "PUE",
+      "nombre": "PUEBLA"
+    },
+    {
+      "id": 22,
+      "clave": "QR",
+      "nombre": "QUINTANA ROO"
+    },
+    {
+      "id": 23,
+      "clave": "QRO",
+      "nombre": "QUERETARO"
+    },
+    {
+      "id": 24,
+      "clave": "SIN",
+      "nombre": "SINALOA"
+    },
+    {
+      "id": 25,
+      "clave": "SLP",
+      "nombre": "SAN LUIS POTOSI"
+    },
+    {
+      "id": 26,
+      "clave": "SON",
+      "nombre": "SONORA"
+    },
+    {
+      "id": 27,
+      "clave": "TAB",
+      "nombre": "TABASCO"
+    },
+    {
+      "id": 28,
+      "clave": "TLX",
+      "nombre": "TLAXCALA"
+    },
+    {
+      "id": 29,
+      "clave": "TMS",
+      "nombre": "TAMAULIPAS"
+    },
+    {
+      "id": 30,
+      "clave": "VER",
+      "nombre": "VERACRUZ"
+    },
+    {
+      "id": 31,
+      "clave": "YUC",
+      "nombre": "YUCATAN"
+    },
+    {
+      "id": 32,
+      "clave": "ZAC",
+      "nombre": "ZACATECAS"
+    }
+  ],
+  "ciudads": [
+    {
+      "id": 1,
+      "nombre": "CULIACAN",
+      "estadoId": 24
+    },
+    {
+      "id": 2,
+      "nombre": "LOS MOCHIS",
+      "estadoId": 24
+    },
+    {
+      "id": 3,
+      "nombre": "GUASAVE",
+      "estadoId": 24
+    },
+    {
+      "id": 4,
+      "nombre": "MAZATLAN",
+      "estadoId": 24
+    }
+  ],
+  "centros": [
+    {
+      "id": 1,
+      "nomCentro": "230870",
+      "opcEstatus": 0,
+      "selected": true,
+      "ciudadId": 3,
+      "fecActualiza": "2019-06-05"
+    },
+    {
+      "id": 2,
+      "nomCentro": "2308asdf",
+      "opcEstatus": 1,
+      "selected": true,
+      "ciudadId": 1,
+      "fecActualiza": "2018-12-27"
+    },
+    {
+      "id": 3,
+      "nomCentro": "230830",
+      "opcEstatus": 2,
+      "selected": true,
+      "fecActualiza": "2018-12-27",
+      "ciudadId": 2
+    },
+    {
+      "id": 4,
+      "nomCentro": "230850",
+      "opcEstatus": 2,
+      "selected": true,
+      "fecActualiza": "2018-12-27",
+      "ciudadId": 3
+    },
+    {
+      "id": 5,
+      "nomCentro": "ejemplo",
+      "opcEstatus": 0,
+      "selected": true,
+      "ciudadId": 1,
+      "fecActualiza": "2020-08-14"
+    }
+  ]
+}

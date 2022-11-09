@@ -1,0 +1,77 @@
+<div class="contenedor mw-100 vh-100">
+
+  <!-- Primer elipse -->
+  <div class="elipse1"></div>
+  <!-- Elipse blanco -->
+  <div class="elipseB"></div>
+  <!-- Elipse Amarillo chico -->
+  <div class="elipseAC"></div>
+  <!-- Elipse Amarillo Grande -->
+  <div class="elipseAG"></div>
+  <!-- Elipse Chico azul marino -->
+  <div class="elipseCA"></div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="carPadre">
+        <div class="card">
+          <div class="card-body">
+
+            <!--Formulario donde se muestra el tipo de inicio de sesion-->
+            <form class="form1" action="">
+
+              <!-- Selección de tipo de inicio de sesión -->
+              <div class="img">
+                <a>
+                  <img src="assets/img/logo-new.png">
+                </a>
+              </div>
+              <ng-container *ngIf="!loginSelected; else loginForm">
+                <h1 class="text-center">Inicia sesión de forma segura<span>.</span></h1>
+                <button class="buttonG btn btn-primary" *ngIf="authMechanisms.azureAD" (click)="login('azureAD')">
+                  Inicia sesión con Identidad Digital
+                </button>
+                <button class="buttonG btn btn-secondary" *ngIf="authMechanisms.colaboradorDigital" (click)="loginSelected='colaboradorDigital'">
+                  Inicia sesión con Colaborador Digital
+                </button>
+                <button class="buttonC btn btn-primary" *ngIf="authMechanisms.huella" (click)="loginSelected='huella'">
+                  Inicia sesión con Huella Digital
+                </button>
+                <button class="buttonG btn btn-secondary" *ngIf="authMechanisms.custom" (click)="loginSelected='custom'">
+                  Inicia sesión con Usuario y Contraseña
+                </button>
+                <p class="registrar text-muted text-primary"><a href="!#">¿No estas registrado? Registrate ahora</a></p>
+              </ng-container>
+
+              <ng-template #loginForm>
+                <!-- Login Huella -->
+                <login-huella
+                  *ngIf="loginSelected==='huella'"
+                  [allowBack]="loginUnique === undefined"
+                  (goback)="loginSelected=loginUnique"
+                  (credentials)="login(loginSelected, $event)"
+                ></login-huella>
+                <!-- Login Colaborador Digital -->
+                <login-cdigital
+                  *ngIf="loginSelected==='colaboradorDigital'"
+                  [allowBack]="loginUnique === undefined"
+                  (goback)="loginSelected=loginUnique"
+                  (credentials)="login(loginSelected, $event)"
+                ></login-cdigital>
+                <!-- Login Interno Custom -->
+                <login-custom
+                  *ngIf="loginSelected==='custom'"
+                  [allowBack]="loginUnique === undefined"
+                  (goback)="loginSelected=loginUnique"
+                  (credentials)="login(loginSelected, $event)"
+                ></login-custom>
+              </ng-template>
+
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

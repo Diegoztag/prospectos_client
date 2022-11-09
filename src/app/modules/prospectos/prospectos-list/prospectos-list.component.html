@@ -1,0 +1,90 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" *blockUI="'prospectos-list'">
+        <div class="card-header">
+          <strong>Listado de Prospectos</strong>
+          <div class="card-actions">
+            <a [routerLink]="['/prospectos/nuevo']" tooltip="Agregar Nuevo Prospecto" class="btn-crear btn-setting btn btn-sm btn-primary" href="#">
+              <i class="fas fa-plus">Nuevo +</i>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">
+          <p-table
+            #dt
+            [columns]="cols"
+            [value]="prospectos"
+            [autoLayout]="true"
+            [paginator]="true"
+            [rows]="10"
+            sortMode="single"
+            sortField="id"
+            [rowsPerPageOptions]="[10, 20, 50]"
+            styleClass="p-datatable-sm"
+          >
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of cols" [pSortableColumn]="col.field" class="text-center">
+                  {{ col.header }}
+                  <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+                <th></th>
+              </tr>
+              <tr>
+                <th *ngFor="let col of cols" [ngSwitch]="col.field">
+                  <input
+                    *ngIf="col.field == 'nom_nombre'"
+                    class="form-control"
+                    pInputText
+                    type="text"
+                    (input)="dt.filter($event.target.value, col.field, 'contains')"
+                  />
+                  <p-dropdown
+                    *ngSwitchCase="'idu_cat_estatus'"
+                    appendTo="body"
+                    [options]="estatus"
+                    [style]="{ width: '100%' }"
+                    (onChange)="info($event.value, col.field); dt.filter($event.value, col.field, 'equals')"
+                  ></p-dropdown>
+                </th>
+                <th></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+              <tr>
+                <td class="tab-width-40">{{ item.nom_nombre }} {{ item.nom_apellido_paterno }} {{ item.nom_apellido_materno }}</td>
+                <td class="tab-width-10">
+                  <span
+                  [ngClass]="
+                  {
+                  'badge badge-primary':item.idu_cat_estatus == 1,
+                  'badge badge-danger':item.idu_cat_estatus == 2,
+                  'badge badge-success':item.idu_cat_estatus == 3
+                  }">
+                  {{ item.idu_cat_estatus | estatus }}</span>
+                </td>
+                <td class="tab-width-10">{{ item.fec_creado | date: 'dd/MM/yyyy' }}</td>
+                <td class="tab-width-10">
+                  <div class="text-center">
+                    <a
+                      [routerLink]="['ver', item.idu_prospecto]"
+                      id=""
+                      class="btn btn-info btn-md"
+                      href="#"
+                      role="button"
+                    >
+                      <i class="fas fa-pencil-alt">Ver</i>
+                    </a>
+                  </div>
+                </td>
+
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-open-pdf [visualizar]="opcion" [openPdf]="openPdf"></app-open-pdf>

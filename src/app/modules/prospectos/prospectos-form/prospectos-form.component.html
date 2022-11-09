@@ -1,0 +1,344 @@
+<div class="animated fadeIn">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card" *blockUI="'prospecto-data'">
+        <form action="" class="form-horizontal" [formGroup]="prospectoForm" (ngSubmit)="enviar(uploader)">
+          <div class="card-header">
+            <strong>{{ title }} </strong>
+            <div class="card-actions">
+              <a [routerLink]="['/prospectos']" tooltip="Regresar" class="btn-setting text-primary" href="#">
+                <i class="icon-arrow-left-circle"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="card-body">
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">Nombre*</label>
+              <div class="col-md-9">
+                <input
+                  formControlName="nom_nombre"
+                  class="form-control"
+                  id="nom_nombre"
+                  name="nom_nombre"
+                  placeholder=""
+                  type="text"
+                  maxlength="25"
+                  appRestringirTipo
+                  [permitir]="'letras'"
+                  [canPaste]="true"
+                  [canCut]="false"
+                  uppercase
+                />
+                <span
+                  *ngIf="prospectoForm.controls['nom_nombre'].invalid && prospectoForm.controls['nom_nombre'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">Apellido Paterno*</label>
+              <div class="col-md-9">
+                <input
+                  formControlName="nom_apellido_paterno"
+                  class="form-control"
+                  id="nom_apellido_paterno"
+                  name="nom_apellido_paterno"
+                  placeholder=""
+                  type="text"
+                  maxlength="25"
+                  appRestringirTipo
+                  [permitir]="'letras'"
+                  [canPaste]="true"
+                  [canCut]="false"
+                  uppercase
+                />
+                <span
+                  *ngIf="prospectoForm.controls['nom_apellido_paterno'].invalid && prospectoForm.controls['nom_apellido_paterno'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">Apellido Materno</label>
+              <div class="col-md-9">
+                <input
+                  formControlName="nom_apellido_materno"
+                  class="form-control"
+                  id="nom_apellido_materno"
+                  name="nom_apellido_materno"
+                  placeholder=""
+                  type="text"
+                  maxlength="25"
+                  appRestringirTipo
+                  [permitir]="'letras'"
+                  [canPaste]="true"
+                  [canCut]="false"
+                  uppercase
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">Calle*</label>
+              <div class="col-md-9">
+                <input
+                  formControlName="nom_calle"
+                  class="form-control"
+                  id="nom_calle"
+                  name="nom_calle"
+                  placeholder=""
+                  type="text"
+                  maxlength="30"
+                  uppercase
+                />
+                <span
+                  *ngIf="prospectoForm.controls['nom_calle'].invalid && prospectoForm.controls['nom_calle'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">Colonia*</label>
+              <div class="col-md-9">
+                <input
+                  formControlName="nom_colonia"
+                  class="form-control"
+                  id="nom_colonia"
+                  name="nom_colonia"
+                  placeholder=""
+                  type="text"
+                  maxlength="30"
+                  uppercase
+                />
+                <span
+                  *ngIf="prospectoForm.controls['nom_colonia'].invalid && prospectoForm.controls['nom_colonia'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">Numero Exterior*</label>
+              <div class="col-md-3">
+                <input
+                  formControlName="num_casa_ext"
+                  class="form-control"
+                  id="num_casa_ext"
+                  name="num_casa_ext"
+                  placeholder=""
+                  type="text"
+                  maxlength="5"
+                  appRestringirTipo
+                  [permitir]="'numeros'"
+                  [canPaste]="true"
+                  [canCut]="false"
+                />
+                <span
+                  *ngIf="prospectoForm.controls['num_casa_ext'].invalid && prospectoForm.controls['num_casa_ext'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+
+              <label class="col-md-3 form-control-label" for="name">Numero Interior</label>
+              <div class="col-md-3">
+                <input
+                  formControlName="num_casa_int"
+                  class="form-control"
+                  id="num_casa_int"
+                  name="num_casa_int"
+                  placeholder=""
+                  type="text"
+                  maxlength="5"
+                  uppercase
+                />
+                <span
+                  *ngIf="prospectoForm.controls['num_casa_int'].invalid && prospectoForm.controls['num_casa_int'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">CP*</label>
+              <div class="col-md-3">
+                <input
+                  formControlName="num_cp"
+                  class="form-control"
+                  id="num_cp"
+                  name="num_cp"
+                  placeholder=""
+                  type="text"
+                  maxlength="5"
+                  minlength="5"
+                  appRestringirTipo
+                  [permitir]="'numeros'"
+                  [canPaste]="true"
+                  [canCut]="false"
+                />
+                <span
+                  *ngIf="prospectoForm.controls['num_cp'].invalid && prospectoForm.controls['num_cp'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+
+              <label class="col-md-3 form-control-label" for="name">Telefono*</label>
+              <div class="col-md-3">
+                <input
+                  formControlName="num_telefono"
+                  class="form-control"
+                  id="num_telefono"
+                  name="num_telefono"
+                  placeholder=""
+                  type="text"
+                  minlength="10"
+                  appRestringirTipo
+                  [textMask]=" {mask: maskTelefono, showMask:false, keepCharPositions: true }"
+                  [permitir]="'numeros'"
+                  [canPaste]="true"
+                  [canCut]="false"
+                />
+                <span
+                  *ngIf="prospectoForm.controls['num_telefono'].invalid && prospectoForm.controls['num_telefono'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">RFC*</label>
+              <div class="col-md-9">
+                <input
+                  formControlName="num_rfc"
+                  class="form-control"
+                  id="num_rfc"
+                  name="num_rfc"
+                  placeholder=""
+                  type="text"
+                  minlength="10"
+                  maxlength="10"
+                  uppercase
+                />
+                <span
+                  *ngIf="prospectoForm.controls['num_rfc'].invalid && prospectoForm.controls['num_rfc'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="prospecto?.idu_prospecto">
+              <label class="col-md-3 form-control-label" for="select">Estatus</label>
+              <div class="col-md-9">
+                <select formControlName="idu_cat_estatus" class="form-control" id="idu_cat_estatus" name="idu_cat_estatus">
+                  <option [value]="">Seleccione...</option>
+                  <option [ngValue]="1">ENVIADO</option>
+                  <option [ngValue]="2">AUTORIZADO</option>
+                  <option [ngValue]="3">RECHAZADO</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row" *ngIf="prospecto?.idu_cat_estatus == 3">
+              <label class="col-md-3 form-control-label" for="name">Observación</label>
+              <div class="col-md-9">
+                <input
+                  formControlName="des_observacion"
+                  class="form-control"
+                  id="des_observacion"
+                  name="des_observacion"
+                  placeholder=""
+                  type="text"
+                  maxlength="10"
+                  uppercase
+                />
+                <span
+                  *ngIf="prospectoForm.controls['des_observacion'].invalid && prospectoForm.controls['des_observacion'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="files">Documentos</label>
+              <div *ngIf="!prospecto?.idu_prospecto" class="col-sm-9">
+                <span class="hidden-file">
+                  <input type="file" #fileInput ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" />
+                </span>
+                <div class="btn-group" (click)="fileInput.click()">
+                  <button [disabled]="prospectoForm.invalid" type="button" class="btn btn-primary btn-md">
+                      Agregar +
+                  </button>
+                </div>
+              </div>
+
+              <div *ngIf="!prospectoForm.invalid" class="col-md-12 mt-5 animated fadeIn">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th *ngIf="!prospecto?.idu_prospecto">Tamaño</th>
+                      <th>Acción</th>
+                    </tr>
+                  </thead>
+                  <!-- Creacion prospectos -->
+                  <tbody *ngIf="!prospecto?.idu_prospecto">
+                    <tr *ngFor="let item of uploader.queue">
+                      <td><strong>{{ item?.file?.name }}</strong></td>
+                      <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                      <td nowrap>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="item.remove()">
+                        <span class="glyphicon glyphicon-trash"></span>
+                          Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <!-- Visualizacion prospectos -->
+                  <tbody *ngIf="prospecto?.idu_prospecto">
+                    <tr *ngFor="let item of docs">
+                      <td>
+                        {{ item?.nom_documento }}
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-primary btn-md" (click)="bajarArchivo(item.nom_documento)">
+                          <span class="glyphicon glyphicon-trash"></span>
+                            Descargar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+          <div class="card-footer clearfix">
+            <div class="group-buttons float-right">
+              <button (click)="resetForm()" class="btn btn-md btn-warning" type="reset" *ngIf="!prospecto?.idu_prospecto">
+                <i class="fa fa-ban"></i> Limpiar
+              </button>
+              <button type="button" class="btn btn-md btn-danger" (click)="regresar() ">Volver</button>
+              <button *ngIf="!prospecto?.idu_prospecto" [disabled]="prospectoForm.invalid" class="btn btn-md btn-primary" type="submit">
+                <i class="far fa-dot-circle"></i> Enviar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

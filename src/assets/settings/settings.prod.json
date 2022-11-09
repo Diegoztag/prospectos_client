@@ -1,0 +1,8 @@
+{
+  "haveMenu": true,
+  "appLogo": "assets/img/app-logo.png",
+  "footerTitle": "Concredito",
+  "webApiBaseUrl": "http://localhost:3200",
+  "apiMenu": "http://localhost:3200/menu",
+  "login": "/login"
+}
