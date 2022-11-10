@@ -1,4 +1,3 @@
-import { CiudadService } from './services/ciudad.service';
 import { ProspectosService } from './services/prospectos.service';
 import { ProspectosRoutingModule } from './prospectos-routing.module';
 import { NgModule } from '@angular/core';
@@ -6,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ProspectosComponent } from './prospectos.component';
 import { ProspectosFormComponent } from './prospectos-form/prospectos-form.component';
 import { ProspectosListComponent } from './prospectos-list/prospectos-list.component';
+import { ProspectosFormEvaluacionComponent } from './prospecto-form-evaluacion/prospectos-form-evaluacion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -48,7 +48,7 @@ import { TextMaskModule } from 'angular2-text-mask';
     TypeaheadModule.forRoot(),
     SharedComponentsModule,
   ],
-  declarations: [EstatusPipe, ProspectosComponent, ProspectosFormComponent, ProspectosListComponent],
-  providers: [ProspectosService, HuellaService, CiudadService],
+  declarations: [EstatusPipe, ProspectosComponent, ProspectosFormComponent, ProspectosListComponent, ProspectosFormEvaluacionComponent],
+  providers: [ProspectosService, HuellaService],
 })
 export class ProspectosModule {}

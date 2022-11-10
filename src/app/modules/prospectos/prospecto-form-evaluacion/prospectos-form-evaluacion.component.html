@@ -1,0 +1,63 @@
+<div class="animated fadeIn">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card" *blockUI="'prospecto-data'">
+        <form action="" class="form-horizontal" [formGroup]="prospectoEvaluacionForm" (ngSubmit)="enviar()">
+          <div class="card-header">
+            <strong>{{ title }} </strong>
+          </div>
+
+          <div class="card-body">
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="select">Estatus</label>
+              <div class="col-md-9">
+                <select formControlName="idu_cat_estatus" class="form-control" id="idu_cat_estatus" name="idu_cat_estatus">
+                  <option [value]="">Seleccione...</option>
+                  <option [ngValue]="1">ENVIADO</option>
+                  <option [ngValue]="2">AUTORIZADO</option>
+                  <option [ngValue]="3">RECHAZADO</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label" for="name">Observación</label>
+              <div class="col-md-9">
+                <input
+                  formControlName="des_observacion"
+                  class="form-control"
+                  id="des_observacion"
+                  name="des_observacion"
+                  placeholder=""
+                  type="text"
+                  maxlength="100"
+                  uppercase
+                />
+                <span
+                  *ngIf="prospectoEvaluacionForm.controls['des_observacion'].invalid && prospectoEvaluacionForm.controls['des_observacion'].touched"
+                  class="help-block text-danger"
+                  >Este campo es requerido</span
+                >
+              </div>
+            </div>
+
+          </div>
+          <div class="card-footer clearfix">
+            <div class="group-buttons float-right">
+              <button (click)="resetForm()" class="btn btn-md btn-warning" type="reset">
+                <i class="fa fa-ban"></i> Limpiar
+              </button>
+
+              <button type="button" class="btn btn-md btn-danger" (click)="regresar() ">Volver</button>
+
+              <button [disabled]="prospectoEvaluacionForm.invalid" class="btn btn-md btn-primary" type="submit">
+                <i class="far fa-dot-circle"></i> Enviar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

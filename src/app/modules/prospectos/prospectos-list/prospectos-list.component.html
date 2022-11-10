@@ -5,12 +5,24 @@
         <div class="card-header">
           <strong>Listado de Prospectos</strong>
           <div class="card-actions">
-            <a [routerLink]="['/prospectos/nuevo']" tooltip="Agregar Nuevo Prospecto" class="btn-crear btn-setting btn btn-sm btn-primary" href="#">
-              <i class="fas fa-plus">Nuevo +</i>
+            <a [routerLink]="['/prospectos/nuevo']" tooltip="Agregar Nuevo Prospecto" class="btn-crear btn-setting btn btn-sm btn-primary">
+              Crear
+              <span class="pi pi-user-plus"></span>
             </a>
           </div>
         </div>
         <div class="card-body">
+
+          <div class="row">
+            <label class="col-md-2 form-control-label" for="select"><strong>Selecciona promotor</strong></label>
+            <div class="col-md-4">
+              <select class="form-control" id="idu_promotor" name="idu_promotor" (change)="obtenerProspectos($event.target.value)">
+                <option [value]="">Seleccione...</option>
+                <option *ngFor="let promotor of promotores" [ngValue]="promotor.idu_promotor">{{promotor.idu_promotor}} - {{promotor.nom_nombre}} {{promotor.nom_apellido_paterno}} {{promotor.nom_apellido_materno}}</option>
+              </select>
+            </div>
+          </div><br>
+
           <p-table
             #dt
             [columns]="cols"
@@ -58,25 +70,22 @@
                   <span
                   [ngClass]="
                   {
-                  'badge badge-primary':item.idu_cat_estatus == 1,
-                  'badge badge-danger':item.idu_cat_estatus == 2,
-                  'badge badge-success':item.idu_cat_estatus == 3
+                  'badge-primary':item.idu_cat_estatus == 1,
+                  'badge-success':item.idu_cat_estatus == 2,
+                  'badge-danger':item.idu_cat_estatus == 3
                   }">
                   {{ item.idu_cat_estatus | estatus }}</span>
                 </td>
                 <td class="tab-width-10">{{ item.fec_creado | date: 'dd/MM/yyyy' }}</td>
                 <td class="tab-width-10">
-                  <div class="text-center">
-                    <a
-                      [routerLink]="['ver', item.idu_prospecto]"
-                      id=""
-                      class="btn btn-info btn-md"
-                      href="#"
-                      role="button"
-                    >
-                      <i class="fas fa-pencil-alt">Ver</i>
-                    </a>
-                  </div>
+                  <button [routerLink]="['ver', item.idu_prospecto]" type="button" class="btn btn-md btn-info" >
+                    Ver
+                    <span class="pi pi-check-square"></span>
+                  </button>
+                  <button [routerLink]="['evaluar', item.idu_prospecto]" type="button" class="btn btn-md btn-success" >
+                    Evaluar
+                    <span class="pi pi-user-edit"></span>
+                  </button>
                 </td>
 
               </tr>
@@ -87,4 +96,3 @@
     </div>
   </div>
 </div>
-<app-open-pdf [visualizar]="opcion" [openPdf]="openPdf"></app-open-pdf>

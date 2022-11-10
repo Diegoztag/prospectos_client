@@ -19,7 +19,9 @@ export class FullLayoutComponent implements OnInit {
     animation: 'slideDown',
   });
 
-  constructor(private auth: AuthenticationService, public configService: ConfigService) {
+  constructor(
+    // private auth: AuthenticationService,
+    public configService: ConfigService) {
     this.notificaciones = [];
     this.mensajes = [];
     this.config = this.configService.config;
@@ -28,10 +30,10 @@ export class FullLayoutComponent implements OnInit {
   public ngOnInit() {
     this.haveMenu = this.config.haveMenu;
     this.appLogo = this.config.appLogo;
-    this.auth.currentUser().then(
-      profile => {
-        console.log(profile);
-      }
-    )
+    // this.auth.currentUser().then(
+    //   profile => {
+    //     // console.log(profile);
+    //   }
+    // )
   }
 }

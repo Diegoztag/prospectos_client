@@ -10,25 +10,11 @@ const isIframe = window !== window.parent && !window.opener;
 
 export const APP_ROUTES: Routes = [
   {
-    path: 'login',
-    component: SimpleLayoutComponent,
-    data: {
-      title: 'Login',
-    },
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./modules/login/login.module').then((m) => m.LoginModule),
-      },
-    ],
-  },
-  {
     path: 'code',
     redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
-    // canActivate: [AuthGuard],
     path: '',
     component: FullLayoutComponent,
     data: {

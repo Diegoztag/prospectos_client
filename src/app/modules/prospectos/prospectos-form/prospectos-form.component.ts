@@ -9,6 +9,7 @@ import { IProspecto } from '../models/prospecto';
 import { Mensaje } from '../../../models/mensaje';
 import { FileUploader } from 'ng2-file-upload';
 import { IDocumento } from '../models/documento';
+import { IPromotor } from '../models/promotor';
 import Swal from 'sweetalert2';
 import { ConfigService } from '../../../services';
 import { v4 as uuidv4 } from 'uuid';
@@ -28,6 +29,7 @@ export class ProspectosFormComponent implements OnInit, OnDestroy {
   public idu_prospecto: number;
   public maskTelefono: any;
   public uploader: FileUploader;
+  public promotores: IPromotor[];
   private sub: any;
 
   constructor(
@@ -45,6 +47,7 @@ export class ProspectosFormComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.prospectoForm = this.fb.group({
+      idu_promotor: new UntypedFormControl('', Validators.required),
       idu_prospecto: new UntypedFormControl(0),
       nom_nombre: new UntypedFormControl('', Validators.required),
       nom_apellido_paterno: new UntypedFormControl('', Validators.required),
@@ -57,8 +60,7 @@ export class ProspectosFormComponent implements OnInit, OnDestroy {
       num_telefono: new UntypedFormControl('', Validators.required),
       num_rfc: new UntypedFormControl('', Validators.required),
       idu_cat_estatus: new UntypedFormControl(''),
-      des_observacion: new UntypedFormControl(''),
-      idu_promotor: new UntypedFormControl(parseInt(this.secureStorage.getItem('currentUser')))
+      des_observacion: new UntypedFormControl('')
     });
 
     this.uploader = new FileUploader({
@@ -83,6 +85,18 @@ export class ProspectosFormComponent implements OnInit, OnDestroy {
           this.inicializarFormulario(this.prospecto);
           this.blockUI.stop();
         });
+      } else {
+        this.prospectosService.obtenerPromotores(params).subscribe((result)=>{
+          this.promotores = result.data;
+        }, (error)=>{
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Hubo un problema',
+            text: 'No se Pudo obtener los datos de los Promotores',
+            showConfirmButton: false,
+            timer: 1500});
+        })
       }
     });
   }
@@ -107,7 +121,7 @@ export class ProspectosFormComponent implements OnInit, OnDestroy {
       num_rfc: data.num_rfc,
       idu_cat_estatus: data.idu_cat_estatus ? data.idu_cat_estatus : 1,
       des_observacion: data.des_observacion ? data.des_observacion : null,
-      idu_promotor: parseInt(this.secureStorage.getItem('currentUser')),
+      idu_promotor: data.idu_promotor
     });
   }
 
@@ -174,8 +188,8 @@ export class ProspectosFormComponent implements OnInit, OnDestroy {
   public regresar() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
+        confirmButton: 'btn btn-success btn-md',
+        cancelButton: 'btn btn-danger btn-md'
       },
       buttonsStyling: false
     });

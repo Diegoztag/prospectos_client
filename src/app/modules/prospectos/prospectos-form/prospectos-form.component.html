@@ -6,13 +6,26 @@
           <div class="card-header">
             <strong>{{ title }} </strong>
             <div class="card-actions">
-              <a [routerLink]="['/prospectos']" tooltip="Regresar" class="btn-setting text-primary" href="#">
+              <a [routerLink]="['/prospectos']" tooltip="Regresar" class="btn-setting text-primary" href="">
                 <i class="icon-arrow-left-circle"></i>
               </a>
             </div>
           </div>
 
           <div class="card-body">
+
+            <div class="form-group row" *ngIf="!prospecto?.idu_prospecto">
+              <label class="col-md-3 form-control-label" for="select">Promotor asignado*</label>
+              <div class="col-md-9">
+                <select formControlName="idu_promotor" class="form-control" id="idu_promotor" name="idu_promotor">
+                  <option *ngFor="let promotor of promotores" [ngValue]="promotor.idu_promotor">{{promotor.idu_promotor}} - {{promotor.nom_nombre}} {{promotor.nom_apellido_paterno}} {{promotor.nom_apellido_materno}}</option>
+                </select>
+                <span
+                *ngIf="prospectoForm.controls['idu_promotor'].invalid && prospectoForm.controls['idu_promotor'].touched"
+                class="help-block text-danger"
+                >Este campo es requerido</span>
+              </div>
+            </div>
 
             <div class="form-group row">
               <label class="col-md-3 form-control-label" for="name">Nombre*</label>
@@ -300,7 +313,7 @@
                       <td><strong>{{ item?.file?.name }}</strong></td>
                       <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
                       <td nowrap>
-                        <button type="button" class="btn btn-danger btn-sm" (click)="item.remove()">
+                        <button type="button" class="btn btn-danger btn-md" (click)="item.remove()">
                         <span class="glyphicon glyphicon-trash"></span>
                           Eliminar
                         </button>
@@ -331,7 +344,9 @@
               <button (click)="resetForm()" class="btn btn-md btn-warning" type="reset" *ngIf="!prospecto?.idu_prospecto">
                 <i class="fa fa-ban"></i> Limpiar
               </button>
+
               <button type="button" class="btn btn-md btn-danger" (click)="regresar() ">Volver</button>
+
               <button *ngIf="!prospecto?.idu_prospecto" [disabled]="prospectoForm.invalid" class="btn btn-md btn-primary" type="submit">
                 <i class="far fa-dot-circle"></i> Enviar
               </button>

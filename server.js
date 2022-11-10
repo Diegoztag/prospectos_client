@@ -120,43 +120,43 @@ server.get('/centros/pdf', (_req, res) => {
   });
 });
 
-server.use(/^(?!\/auth).*$/, async (req, res, next) => {
-  const token = req.headers.authorization;
-  const method = req.headers['session-type'];
+// server.use(/^(?!\/auth).*$/, async (req, res, next) => {
+//   const token = req.headers.authorization;
+//   const method = req.headers['session-type'];
 
-  if (token === undefined || method === undefined) {
-    const status = 401;
-    const message = 'Error in authorization format';
-    res.status(status).json({ status, message });
-    return;
-  }
+//   if (token === undefined || method === undefined) {
+//     const status = 401;
+//     const message = 'Error in authorization format';
+//     res.status(status).json({ status, message });
+//     return;
+//   }
 
-  try {
-    if (method === 'MSAL') {
-      next();
-    }
-    else if (method === 'SSO') {
-      await verifySSOToken(token)
-      next();
-    }
-    else if (method === 'CST') {
-      let verifyTokenResult = verifyToken(token);
-      if (verifyTokenResult instanceof Error) throw verifyTokenResult;
-      next();
-    }
-  } catch (err) {
-    const status = 401;
-    const respuesta = {
-      meta: { status: 'ERROR', count: 1 },
-      data: {
-        errorCode: 401,
-        userMessage: 'No tienes acceso al recurso',
-        devMessage: err,
-      },
-    };
-    res.status(status).json(respuesta);
-  }
-});
+  // try {
+  //   if (method === 'MSAL') {
+  //     next();
+  //   }
+  //   else if (method === 'SSO') {
+  //     await verifySSOToken(token)
+  //     next();
+  //   }
+  //   else if (method === 'CST') {
+  //     let verifyTokenResult = verifyToken(token);
+  //     if (verifyTokenResult instanceof Error) throw verifyTokenResult;
+  //     next();
+  //   }
+  // } catch (err) {
+  //   const status = 401;
+  //   const respuesta = {
+  //     meta: { status: 'ERROR', count: 1 },
+  //     data: {
+  //       errorCode: 401,
+  //       userMessage: 'No tienes acceso al recurso',
+  //       devMessage: err,
+  //     },
+  //   };
+  //   res.status(status).json(respuesta);
+  // }
+// });
 
 server.use(router);
 const args = require('minimist')(process.argv.slice(2));

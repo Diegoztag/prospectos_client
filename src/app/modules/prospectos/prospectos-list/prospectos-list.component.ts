@@ -3,6 +3,7 @@ import { ToasterService } from 'angular2-toaster';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { IProspecto_lista } from '../models/prospecto_lista';
 import { IEstatus } from '../models/estatus';
+import { IPromotor } from '../models/promotor';
 import { Mensaje } from '../../../models/mensaje';
 import { ProspectosService } from '../services/prospectos.service';
 import Swal from 'sweetalert2';
@@ -28,6 +29,7 @@ export class ProspectosListComponent implements OnInit {
   public cols: any[];
   public prospectos: IProspecto_lista[];
   public estatus: IEstatus[];
+  public promotores: IPromotor[];
 
   public page: number;
   public itemsPerPage: number;
@@ -73,10 +75,31 @@ export class ProspectosListComponent implements OnInit {
 
   public cargarDatos() {
     this.blockUI.start('Cargando...');
-    this.prospectosService.obtener().subscribe((result) => {
+    this.prospectosService.obtenerPromotores().subscribe((resp)=>{
+      this.promotores = resp.data;
+      this.blockUI.stop();
+    }, (error) =>{
+      this.blockUI.stop();
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Hubo un problema',
+        text:'No se pudo obtener el listado de prospectos',
+        showConfirmButton: false,
+        timer: 3000});
+    })
+  }
+
+  public info($event, col) {
+    // Ejecuta alguna accion  //console.log($event, col);
+  }
+
+  public obtenerProspectos (value) {
+    let idu_promotor = parseInt(value.slice(0, value.lastIndexOf('-')));
+
+    this.prospectosService.obtener(idu_promotor).subscribe((result) => {
       this.prospectos = result.data;
       this.length = this.prospectos.length;
-      this.blockUI.stop();
     }, (error) => {
       Swal.fire({
         position: 'center',
@@ -86,16 +109,5 @@ export class ProspectosListComponent implements OnInit {
         showConfirmButton: false,
         timer: 3000});
     });
-  }
-
-  public consultarPdf() {
-    this.prospectosService.obtenerPdf().subscribe((dataFile) => {
-      this.opcion = 'modal';
-      this.openPdf.emit(dataFile);
-    });
-  }
-
-  public info($event, col) {
-    // Ejecuta alguna accion  //console.log($event, col);
   }
 }

@@ -3,7 +3,7 @@
     {
       "name": "Inicio",
       "url": "/dashboard",
-      "icon": "icon-speedometer"
+      "icon": "pi pi-home"
     },
     {
       "name": "Ejemplo",
@@ -22,12 +22,12 @@
         {
           "name": "Inicio",
           "url": "/dashboard",
-          "icon": "icon-speedometer"
+          "icon": "pi pi-home"
         },
         {
           "name": "Prospectos",
           "url": "/prospectos",
-          "icon": "icon-wrench"
+          "icon": "pi pi-users"
         }
       ]
     }
